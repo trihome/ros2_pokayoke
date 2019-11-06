@@ -1,0 +1,18 @@
+[Unit]
+Description=POKAYOKE System
+After=local-fs.target roswatcher.service
+ConditionPathExists=/home/ubuntu/ros2_ws/src/poka
+
+[Service]
+ExecStart=/home/ubuntu/ros2_ws/src/poka/poka.sh
+ExecStop=/bin/kill ${MAINPID}
+Restart=on-failure
+StartLimitInterval=60
+StartLimitBurst=3
+KillMode=mixed
+Type=simple
+User=ubuntu
+Group=ubuntu
+
+[Install]
+WantedBy=multi-user.target

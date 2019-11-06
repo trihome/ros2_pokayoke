@@ -1,0 +1,20 @@
+#---------------------------------------------------------------------
+#	poka.logrotate
+#---------------------------------------------------------------------
+# setup:
+#		$ cd /etc/logrotate.d
+#		$ sudo cp ~/ros2_ws/src/poka/poka.logrotate ./poka
+#		$ sudo chmod 644 poka
+#		$ sudo logrotate -f ./poka
+#---------------------------------------------------------------------
+
+/home/ubuntu/ros2_ws/src/poka/log/poka.log {
+  daily
+  missingok
+  rotate 5
+  compress
+  delaycompress
+  notifempty
+  copytruncate
+  su ubuntu ubuntu
+}
